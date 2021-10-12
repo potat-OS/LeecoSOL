@@ -82,7 +82,7 @@ public class Multiply {
     public static void main(String[] args) throws Exception {
         String num1 = "123456789", num2 = "987654321";
         Class<?> clz = Class.forName("Multiply");
-        Constructor con = clz.getDeclaredConstructor();
+        Constructor<?> con = clz.getDeclaredConstructor();
         Multiply multiply = (Multiply) con.newInstance();
 
         System.out.println(multiply.multiply(num1, num2));

@@ -1,20 +1,20 @@
-import ReversePrint.*;
+import util.DoublyListNode;
 
 public class Flatten {
 
-    Node res;
-    Node cur;
+    DoublyListNode<Integer> res;
+    DoublyListNode<Integer> cur;
 
-    public void DFS(Node node) {
+    public void DFS(DoublyListNode<Integer> node) {
         if (node == null) {
             return;
         }
         if (cur == null) {
-            res = new Node();
+            res = new DoublyListNode<Integer>();
             res.val = node.val;
             cur = res;
         } else {
-            Node newNode = new Node();
+            DoublyListNode<Integer> newNode = new DoublyListNode<Integer>();
             newNode.val = node.val;
             cur.next = newNode;
             newNode.prev = cur;
@@ -28,7 +28,7 @@ public class Flatten {
         }
     }
 
-    public Node flatten(Node head) {
+    public DoublyListNode<Integer> flatten(DoublyListNode<Integer> head) {
         DFS(head);
         return res;
     }

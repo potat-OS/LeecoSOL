@@ -1,9 +1,8 @@
-import ReversePrint.ListNode;
+import util.ListNode;
 
 //TODO:
 class SplitListToParts {
-    public ListNode[] splitListToParts(ListNode head, int k) {
-        int[] res = new int[k];
+    public ListNode<Integer>[] splitListToParts(ListNode<Integer> head, int k) {
         return null;
     }
 

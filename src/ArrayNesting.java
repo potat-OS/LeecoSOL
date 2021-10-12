@@ -1,21 +1,21 @@
 
 class Solution {
-    public static int arrayNesting(int[] nums) {
+    public static int arrayNesting(int[] numbs) {
         int maxLength = 0;
-        for (int i = 0; i < nums.length; i++) {
+        for (int i = 0; i < numbs.length; i++) {
             int count = 0;
-            int k = nums[i];
+            int k = numbs[i];
             do {
-                k = nums[k];
+                k = numbs[k];
                 count++;
-            } while (k != nums[i]);
+            } while (k != numbs[i]);
             maxLength = Math.max(maxLength, count);
         }
         return maxLength;
     }
 
     public static void main(String[] args) {
-        int[] nums = { 0, 2, 1 };
-        System.out.println(arrayNesting(nums));
+        int[] numbs = { 0, 2, 1 };
+        System.out.println(arrayNesting(numbs));
     }
 }

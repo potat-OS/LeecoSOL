@@ -5,20 +5,20 @@ import java.util.*;
  */
 public class BDFSTest {
 
-    int ways,k,n;
+    int ways, k, n;
     int flag = 0;
     List<List<Integer>> nodes;
 
     public int numWays(int n, int[][] relation, int k) {
-        this.k=k;
-        this.n=n;
+        this.k = k;
+        this.n = n;
         if (flag == 0) {
             return BFS(n, relation, k);
         }
         if (flag != 0) {
             nodes = new ArrayList<List<Integer>>();
             for (int i = 0; i < n; i++) {
-                nodes.add(new ArrayList<Integer>());                
+                nodes.add(new ArrayList<Integer>());
             }
             for (int[] src : relation) {
                 nodes.get(src[0]).add(src[1]);
@@ -49,8 +49,8 @@ public class BDFSTest {
             }
         }
         for (int tmpRes : from) {
-            if (n-1 == tmpRes) {
-                result +=1;
+            if (n - 1 == tmpRes) {
+                result += 1;
             }
         }
         return result;
@@ -58,7 +58,7 @@ public class BDFSTest {
 
     public void DFS(int Index, int Step) {
         if (Step == k) {
-            if(Index == n-1) {
+            if (Index == n - 1) {
                 ways++;
             }
             return;
