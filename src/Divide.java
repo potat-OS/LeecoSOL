@@ -1,33 +1,33 @@
 public class Divide {
     public int divide(int dividend, int divisor) {
-        int dived = dividend;
-        int disor = divisor;
-        if (dived == 0) {
+        int dd = dividend;
+        int dr = divisor;
+        if (dd == 0) {
             return 0;
         }
-        if (dived == Integer.MIN_VALUE) {
-            if (disor == -1) {
+        if (dd == Integer.MIN_VALUE) {
+            if (dr == -1) {
                 return Integer.MAX_VALUE;
             }
-            if (disor == 1) {
+            if (dr == 1) {
                 return Integer.MIN_VALUE;
             }
         }
-        if (disor == Integer.MIN_VALUE) {
-            return dived == Integer.MIN_VALUE ? 1 : 0;
+        if (dr == Integer.MIN_VALUE) {
+            return dd == Integer.MIN_VALUE ? 1 : 0;
         }
 
-        boolean negative = dived < 0 ^ disor < 0 ? true : false;
-        dived = Math.abs(dived);
-        disor = Math.abs(disor);
-        if (dived < disor) {
+        boolean negative = dd < 0 ^ dr < 0 ? true : false;
+        dd = Math.abs(dd);
+        dr = Math.abs(dr);
+        if (dd < dr) {
             return 0;
         }
         int ans = 1;
         while (true) {
-            dived = dived >> 1;
+            dd = dd >> 1;
             ans *= 2;
-            if (dived <= disor) {
+            if (dd <= dr) {
                 break;
             }
 
