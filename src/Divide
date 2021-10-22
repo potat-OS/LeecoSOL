@@ -1,0 +1,43 @@
+public class Divide {
+    public int divide(int dividend, int divisor) {
+        int dived = dividend;
+        int disor = divisor;
+        if (dived == 0) {
+            return 0;
+        }
+        if (dived == Integer.MIN_VALUE) {
+            if (disor == -1) {
+                return Integer.MAX_VALUE;
+            }
+            if (disor == 1) {
+                return Integer.MIN_VALUE;
+            }
+        }
+        if (disor == Integer.MIN_VALUE) {
+            return dived == Integer.MIN_VALUE ? 1 : 0;
+        }
+
+        boolean negative = dived < 0 ^ disor < 0 ? true : false;
+        dived = Math.abs(dived);
+        disor = Math.abs(disor);
+        if (dived < disor) {
+            return 0;
+        }
+        int ans = 1;
+        while (true) {
+            dived = dived >> 1;
+            ans *= 2;
+            if (dived <= disor) {
+                break;
+            }
+
+        }
+        return negative ? -ans : ans;
+    }
+
+    public static void main(String[] args) throws Exception {
+        Class<?> clz = Class.forName("Divide");
+        System.out.println(clz.getMethod("divide", new Class[] { int.class, int.class })
+                .invoke(clz.getConstructor().newInstance(), 10, 4));
+    }
+}
