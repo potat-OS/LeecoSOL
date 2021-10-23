@@ -77,7 +77,6 @@ public class RenameFiles {
                 System.out.println("No." + count++ + " " + file.getName() + " is renamed to" + newFile.getName());
             }
         } catch (IOException e) {
-            // TODO Auto-generated catch block
             e.printStackTrace();
         }
     }
