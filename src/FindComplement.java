@@ -8,4 +8,8 @@ class FindComplement {
         num |= n >>> 16;
         return num ^ n;
     }
+
+    public static void main(String[] args) {
+        System.out.println(new FindComplement().findComplement(5));
+    }
 }
