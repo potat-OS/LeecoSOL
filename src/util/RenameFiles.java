@@ -38,6 +38,8 @@ public class RenameFiles {
     }
 
     public static void main(String[] args) {
+        // D:\\00_BackUp\\Photos
+        // C:\\Users\\hanli\\OneDrive\\图片
         File file = new File("C:\\Users\\hanli\\OneDrive\\图片");
         if (file.exists()) {
             renameFiles(file);

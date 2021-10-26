@@ -66,10 +66,10 @@ public class ConvertTime {
             sb.append(0);
         }
         sb.append(timeArr[2]);
+        sb.append("-");
         if (timeArr[3] < 10) {
             sb.append(0);
         }
-        sb.append("-");
         sb.append(timeArr[3]);
         if (minute < 10) {
             sb.append(0);
