@@ -1,4 +1,4 @@
-void CalculatePorosity(double coefficient[], double depthStart, double depthEnd, SCurveTrace *por)
+/* void CalculatePorosity(double coefficient[], double depthStart, double depthEnd, SCurveTrace *por)
 {
     this.SetLoopRange(depthStart, depthEnd); //设置循环的起止深度范围
     // 循环，根据公式计算并将值赋给图道
@@ -29,4 +29,4 @@ void main()
     {
         CalculatePorosity(coefficient[i], depth[i], depth[i + 1], por);
     }
-}
+} */
