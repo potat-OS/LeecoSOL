@@ -27,22 +27,22 @@ public class RemoveInvalidParentheses {
                 break;
             }
         }
-        backTrack(sArr, left, right);
+        backTrack(new StringBuilder(sArr.toString()), left, right);
         return null;
     }
 
-    private void backTrack(char[] sArr, int left, int right) {
+    private void backTrack(StringBuilder expr, int left, int right) {
         if (left == 0 && right == 0) {
 
         }
-        for (int i = 0; i < sArr.length; i++) {
+        for (int i = 0; i < expr.length(); i++) {
 
-            if (left > 0 && sArr[i] == '(') {
-                sArr[i] = '/';
-                backTrack(sArr, left - 1, right);
+            if (left > 0 && expr.charAt(i) == '(') {
+                expr.delete(i, i + 1);
+                backTrack(expr, left - 1, right);
             }
-            if (right > 0 && sArr[i] == ')') {
-                backTrack(sArr, left, right - 1);
+            if (right > 0 && expr.charAt(i) == ')') {
+                backTrack(expr, left, right - 1);
             }
         }
 

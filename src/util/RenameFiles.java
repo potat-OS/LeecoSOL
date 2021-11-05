@@ -15,7 +15,7 @@ public class RenameFiles {
         try {
             String originTime = Files.getLastModifiedTime(path).toString();
             int suffix = (int) file.length();
-            File newFile = new File(fileParent + "\\" + ConvertTime.GMTx0ToUTCx8(originTime) + "_" + suffix
+            File newFile = new File(fileParent + "\\" + ConvertTime.of().GMTx0ToUTCx8(originTime) + "_" + suffix
                     + fileName.substring(fileName.lastIndexOf(".")));
             if (!newFile.exists()) {
                 file.renameTo(newFile);

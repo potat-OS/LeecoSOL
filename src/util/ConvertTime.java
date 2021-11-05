@@ -1,14 +1,27 @@
 package util;
 
+import java.util.function.Function;
+
 public class ConvertTime {
-    public static String GMTx0ToUTCx8(String GMTx0) {
+
+    private final Function<String, Integer> func;
+
+    private ConvertTime(Function<String, Integer> func) {
+        this.func = func;
+    }
+
+    public static ConvertTime of() {
+        return new ConvertTime(Integer::parseInt);
+    }
+
+    public String GMTx0ToUTCx8(String GMTx0) {
         StringBuilder sb = new StringBuilder();
-        int year = Integer.parseInt(GMTx0.substring(0, 4));
-        int month = Integer.parseInt(GMTx0.substring(5, 7));
-        int day = Integer.parseInt(GMTx0.substring(8, 10));
-        int hour = Integer.parseInt(GMTx0.substring(11, 13));
-        int minute = Integer.parseInt(GMTx0.substring(14, 16));
-        int seconds = Integer.parseInt(GMTx0.substring(17, 19));
+        int year = func.apply(GMTx0.substring(0, 4));
+        int month = func.apply(GMTx0.substring(5, 7));
+        int day = func.apply(GMTx0.substring(8, 10));
+        int hour = func.apply(GMTx0.substring(11, 13));
+        int minute = func.apply(GMTx0.substring(14, 16));
+        int seconds = func.apply(GMTx0.substring(17, 19));
         int[] timeArr = { year, month, day, hour };
         boolean isLeapYear = year % 400 == 0 || (year % 4 == 0 && year % 100 != 0);
         for (int i = timeArr.length - 1; i >= 0; i--) {
