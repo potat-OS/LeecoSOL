@@ -5,14 +5,12 @@ class SummaryRanges {
     private int index;
     private int length;
 
-    //?造体初始化
     public SummaryRanges() {
         container = new int[] {};
         index = 0;
         length = 0;
     }
 
-    //?容操作
     public int[] grow() {
 
         int oldCapacity = container.length == 0 ? 10 : container.length;
@@ -23,7 +21,6 @@ class SummaryRanges {
         return Arrays.copyOf(container, newCapacity);
     }
 
-    //追加操作
     public void addNum(int val) {
         if (index == container.length) {
             container = grow();
@@ -33,7 +30,6 @@ class SummaryRanges {
         length++;
     }
 
-    //分????始位置?束位置以及??数的?度，包括相等情况
     public int[][] getIntervals() {
 
         Arrays.sort(container, 0, length);
