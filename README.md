@@ -1,2 +1,2 @@
 # LeecoSOL
-My solutions etc. from Leetcode
+My solutions of Leetcode and more...
