@@ -11,8 +11,4 @@ public class MaxCount {
         }
         return minHorizon * minVertical;
     }
-
-    public static void main(String[] args) {
-
-    }
 }
