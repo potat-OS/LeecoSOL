@@ -1,103 +1,91 @@
 package util;
+
 import java.io.*;
 import java.nio.file.*;
 import java.util.*;
 
-/**
- * @apiNote Search in local folder which is provided for logfile based missing
- *          file list
- * @author Han.Linjue
- */
 class MissingFilesHandler {
 
-    // missing file list
-    private List<Path> misFilePathList;
-    // count of successfully written files
-    private int count = 0;
-    // count of repeated files
-    private int repeated = 0;
+    private final String to;
+    private final String src;
+    private final String logPath;
+    private int arranged;
+    private int overwrote;
+    private int missing = 0;
+    private Set<Path> set;
 
-    /**
-     * @apiNote get missing file list by read log file
-     * @param logFilePath Path of log file
-     */
-    public void setMissingFileList(String logFilePath) {
-        boolean readFlag = true;
-        misFilePathList = new ArrayList<>();
-        try (BufferedReader reader = new BufferedReader(new FileReader(logFilePath))) {
-            while (readFlag) {
-                String str = reader.readLine();
-                if (reader.readLine() == null) {
-                    readFlag = false;
-                } else {
-                    // When this line have "(means path)
-                    if (str.split("\"").length > 1) {
-                        // Split lines by " to get absolutePath of missing file
-                        Path missingFilePath = Paths.get(str.split("\"")[1]);
-                        // Change root path of copy to
-                        Path resultPath = Paths.get(missingFilePath.toString().replaceFirst("C:", "E:"));
-                        misFilePathList.add(resultPath);
-                    }
+    private MissingFilesHandler(String src, String to, String logPath) {
+        this.src = src;
+        this.to = to;
+        this.logPath = logPath;
+        this.arranged = 0;
+        this.overwrote = 0;
+        this.missing = 0;
+        this.set = new HashSet<>();
+    }
+
+    public static MissingFilesHandler of(String src, String to, String logPath) {
+        return new MissingFilesHandler(src, to, logPath);
+    }
+
+    public void handle() {
+        try (BufferedReader r = new BufferedReader(new FileReader(to));
+                BufferedWriter logWriter = new BufferedWriter(new FileWriter(new File(logPath)))) {
+            boolean flag = true;
+            while (flag) {
+                String line = r.readLine();
+                if (r.readLine() == null) {
+                    flag = false;
+                } else if (line.split("\"").length > 1) {
+                    set.add(Paths.get(line.split("\"")[1].replaceFirst("C:", "E:")));
                 }
             }
+            missing = set.size();
+            logWriter.write(missing + " 件ミス\n");
+            System.out.println(missing + " 件ミス");
+            findFile(src, logWriter);
+            logWriter.write(arranged + " 件配置した\n");
+            System.out.println(arranged + " 件配置した");
+            logWriter.write(overwrote + " 件書き換えた\n");
+            System.out.println(overwrote + " 件書き換えた");
         } catch (Exception e) {
             e.printStackTrace();
         }
     }
 
-    /**
-     * @apiNote search missing files and copy them
-     * @param srcFilePath
-     * @return count of successfully written files
-     */
-    public int findMissingFile(String srcFilePath) {
-        try {
-            File src = new File(srcFilePath);
-            File[] srcFiles = src.listFiles();
-            for (File srcFile : srcFiles) {
-                if (srcFile.isDirectory()) {
-                    findMissingFile(srcFile.getAbsolutePath());
-                } else if (srcFile.isFile()) {
-                    for (Path misFilePath : misFilePathList) {
-                        if (srcFile.getName().equals(misFilePath.getFileName().toString())) {
-                            File misDir = new File(misFilePath.getParent().toString());
-                            File misFile = new File(misFilePath.toString());
-                            if (!misDir.exists()) {
-                                misDir.mkdirs();
-                            }
-                            if (!misFile.exists()) {
-                                Files.copy(srcFile.toPath(), misFile.toPath(), StandardCopyOption.REPLACE_EXISTING);
-                                System.out.println("モジュール： " + misFile.getAbsolutePath() + " が配置しました。");
-                                count++;
-
-                            } else {
-                                if (srcFile.lastModified() > misFile.lastModified()) {
-                                    Files.copy(srcFile.toPath(), misFile.toPath(), StandardCopyOption.REPLACE_EXISTING);
-                                    System.out.println("古いモジュール： " + misFile.getAbsolutePath() + " が書き換えた。");
-                                    repeated++;
-                                }
-                            }
-                        }
+    private void findFile(String srcPath, BufferedWriter logWriter) throws Exception {
+        File src = new File(srcPath);
+        if (src.isDirectory()) {
+            File[] files = src.listFiles();
+            for (File srcFile : files) {
+                findFile(srcFile.getAbsolutePath(), logWriter);
+            }
+        } else {
+            for (Path path : set) {
+                if (src.getName().equals(path.getFileName().toString())) {
+                    new File(path.getParent().toString()).mkdirs();
+                    File miss = new File(path.toString());
+                    String srcFullPath = src.getAbsolutePath(), missFullPath = miss.getAbsolutePath();
+                    if (!miss.exists()) {
+                        Files.copy(src.toPath(), miss.toPath(), StandardCopyOption.REPLACE_EXISTING);
+                        logWriter.write("配置: [" + srcFullPath + "]-> [" + missFullPath + "]に配置\n");
+                        arranged++;
+                    } else if (src.lastModified() > miss.lastModified()) {
+                        Files.copy(src.toPath(), miss.toPath(), StandardCopyOption.REPLACE_EXISTING);
+                        logWriter.write("書換: [" + srcFullPath + "]-> [" + missFullPath + "]に書換\n");
+                        overwrote++;
                     }
                 }
             }
-        } catch (Exception e) {
-            e.printStackTrace();
         }
-        return count;
-    }
-
-    public int getRepeated() {
-        return this.repeated;
     }
 
     public static void main(String[] args) {
-        String pathTo = "E:\\Temp\\8-19-2021 04-39-32 午後.txt";
-        String srcFilePath = "E:\\GLOVIA\\svn\\cloud-dev\\branches\\MyNumberiZ";
-
-        MissingFilesHandler handler = new MissingFilesHandler();
-        handler.setMissingFileList(pathTo);
-        System.out.println("モジュールを " + handler.findMissingFile(srcFilePath) + " 件配置しました。");
-        System.out.println("古いモジュールを書き換えのは " + handler.getRepeated() + " 件あっています。");
+        String to = "E:\\GLOVIA\\tmp\\11-25-2021 05-08-19 午後.txt", src = "E:\\GLOVIA\\origin",
+                logPath = "E:\\GLOVIA\\tmp\\handler.log";
+        long start = System.currentTimeMillis();
+        MissingFilesHandler.of(src, to, logPath).handle();
+        long end = System.currentTimeMillis();
+        System.out.println(end - start);
     }
 }
