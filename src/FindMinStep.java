@@ -1,42 +1,39 @@
-import java.util.HashSet;
-import java.util.Set;
+import java.util.Arrays;
+import java.util.HashMap;
+import java.util.Map;
 
 class FindMinStep {
-    int ans = 6;
-    int count = 0;
-    Set<String> set;
+    int ans = 5;
+    Map<String, Integer> map;
 
     public int findMinStep(String board, String hand) {
-        set = new HashSet<>();
-        backTrack(board, hand);
-        return ans == 6 ? -1 : ans;
+        map = new HashMap<>();
+        char[] arr = hand.toCharArray();
+        Arrays.sort(arr);
+        backTrack(board, new String(arr));
+        return ans >= 5 ? -1 : ans;
     }
 
-    private void backTrack(String b, String h) {
+    private int backTrack(String b, String h) {
         int bLen = b.length(), hLen = h.length();
-        int gapCount = 1 + bLen;
         if (0 == bLen) {
-            ans = Integer.min(ans, count);
-            count = 0;
-            return;
+            return 0;
         }
-        if (0 == hLen) {
-            count = 0;
-            return;
-        }
-        count++;
-        for (int i = 0; i < gapCount; i++) {
-            for (int j = 0; j < hLen; j++) {
-                StringBuilder str = new StringBuilder();
-                str.append(b, 0, j).append(h.charAt(j));
-                if (j != b.length()) {
-                    str.append(b.substring(j));
-                }
-                if (set.add(str.toString())) {
+        String key = b + " " + h;
+        if (!map.containsKey(key)) {
+            int res = 6;
+            for (int i = 0; i < hLen; i++) {
+                for (int j = 0; j <= bLen; j++) {
+                    StringBuilder str = new StringBuilder();
+                    str.append(b, 0, j).append(h.charAt(j));
+                    if (j != b.length()) {
+                        str.append(b.substring(j));
+                    }
                     remove(str);
-                    backTrack(str.toString(), h);
+                    res = Integer.min(backTrack(str.toString(), h), res);
                 }
             }
+            map.put(key, res);
         }
     }
 
