@@ -1,77 +1,75 @@
-import java.util.HashMap;
-import java.util.Map;
+// import java.util.Arrays;
+import java.util.HashSet;
+import java.util.Set;
 
-public class ReorderedPowerOf2 {
+class ReorderedPowerOf2 {
+    // // 回溯暴力枚举
+    // boolean[] vis;
+    // public boolean reorderedPowerOf2(int n) {
+    //     char[] arr = String.valueOf(n).toCharArray();
+    //     vis = new boolean[arr.length];
+    //     return backTrack(arr, 0, 0);
+    // }
 
-    private static Map<Integer, String> map = new HashMap<>() {
-        {
-            put(1, "");
-            put(2, "");
-            put(4, "");
-            put(8, "");
-            put(16, "");
-            put(32, "");
-            put(46, "");
-            put(128, "");
-            put(256, "");
-            put(512, "");
-            put(1024, "");
-            put(2048, "");
-            put(4096, "");
-            put(8192, "");
-            put(16384, "");
-            put(32768, "");
-            put(65536, "");
-            put(131072, "");
-            put(262144, "");
-            put(524288, "");
-            put(1048576, "");
-            put(2097152, "");
-            put(4194304, "");
-            put(8388608, "");
-            put(16777216, "");
-            put(33554432, "");
-            put(67108864, "");
-            put(134217728, "");
-            put(268435456, "");
-            put(536870912, "");
-        }
-    };
+    // private boolean backTrack(char[] arr, int idx, int num) {
+    //     if (arr.length == idx) {
+    //         return isPowerOfTwo(num);
+    //     }
+    //     for (int i = 0; i < arr.length; i++) {
+    //         if ((num == 0 && arr[i] == '0') || vis[i] || (i > 0 && !vis[i - 1] && arr[i] == arr[i - 1])) {
+    //             continue;
+    //         }
+    //         vis[i] = true;
+    //         if (backTrack(arr, 1 + idx, 10 * num + arr[i] - '0')) {
+    //             return true;
+    //         }
+    //         vis[i] = false;
+    //     }
+    //     return false;
+    // }
+
+    // 二的幂
+    // private boolean isPowerOfTwo(int n) {
+    //     return n <= 0 ? false : (n & (n - 1)) == 0;
+    // }
+
+    // // 简单排序判断
+    // public boolean reorderedPowerOf2(int n) {
+    //     char[] arr = String.valueOf(n).toCharArray(), tmp;
+    //     Arrays.sort(arr);
+    //     for (int i = 1; i < 1e9; i *= 2) {
+    //         String iStr = String.valueOf(i);
+    //         if (iStr.length() >= arr.length) {
+    //             tmp = iStr.toCharArray();
+    //             Arrays.sort(tmp);
+    //             if (Arrays.equals(tmp, arr)) {
+    //                 return true;
+    //             }
+    //         }
+    //     }
+    //     return false;
+    // }
+
+    // 字频统计
+    Set<String> set = new HashSet<>();
 
     public boolean reorderedPowerOf2(int n) {
-        if (is2Pow(n)) {
-            return true;
-        }
-        char[] nStr = String.valueOf(n).toCharArray();
-        for (int i = 0; i < nStr.length; i++) {
-            int index = 0;
-            for (int j = 0; j < nStr.length; j++) {
-                if ((nStr[index] != '0' || j != 0) && nStr[index] != nStr[j]) {
-                    char tmp = nStr[j];
-                    nStr[j] = nStr[index];
-                    nStr[index] = tmp;
-                    index++;
-                    if (is2Pow(String.valueOf(nStr))) {
-                        return true;
-                    }
-                }
-            }
-        }
-        return false;
+        preAction();
+        return set.contains(frequency(n));
     }
 
-    private boolean is2Pow(int n) {
-        return map.get(n) != null ? true : false;
-    }
-
-    private boolean is2Pow(String n) {
-        if (n.charAt(0) == '0') {
-            return false;
+    private void preAction() {
+        for (int i = 1; i < 1e9; i *= 2) {
+            set.add(frequency(i));
         }
-        return is2Pow(Integer.parseInt(n));
     }
 
-    public static void main(String[] args) {
-        System.out.println(new ReorderedPowerOf2().reorderedPowerOf2(8219));
+    private String frequency(int n) {
+        char[] tmp = new char[10];
+        while (n > 0) {
+            tmp[n % 10]++;
+            n /= 10;
+        }
+        return new String(tmp);
     }
 }
