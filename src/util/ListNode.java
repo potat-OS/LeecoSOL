@@ -1,32 +1,29 @@
 package util;
 
-/**
- * @author Han.Linjue
- */
-public class ListNode<E extends Object> {
-    public E val;
-    public ListNode<E> next;
+public class ListNode {
+    public int val;
+    public ListNode next;
 
-    public ListNode(E val) {
+    public ListNode(int val) {
         this.val = val;
     }
 
-    public ListNode(E val, ListNode<E> next) {
+    public ListNode(int val, ListNode next) {
         this.val = val;
         this.next = next;
     }
 
-    public void add(E i) {
+    public void add(int i) {
         if (this.next != null) {
             this.next.add(i);
         } else {
-            this.next = new ListNode<E>(i);
+            this.next = new ListNode(i);
         }
     }
 
     @Override
     public String toString() {
-        ListNode<E> head = this;
+        ListNode head = this;
         StringBuilder sBuilder = new StringBuilder();
         while (head != null) {
             sBuilder.append(head.val);

@@ -2,10 +2,10 @@ import util.ListNode;
 
 class ReverseList {
 
-    public int[] reversePrint(ListNode<Integer> head) {
-        ListNode<Integer> cur = head;
-        ListNode<Integer> pre = null;
-        ListNode<Integer> tmp;
+    public int[] reversePrint(ListNode head) {
+        ListNode cur = head;
+        ListNode pre = null;
+        ListNode tmp;
         int count = 0;
         while (cur != null) {
             tmp = cur.next;
@@ -15,7 +15,7 @@ class ReverseList {
             count++;
         }
         int[] res = new int[count];
-        ListNode<Integer> curTmp = pre;
+        ListNode curTmp = pre;
         for (int i = 0; i < count; i++) {
             res[i] = curTmp.val;
             curTmp = curTmp.next;
@@ -24,7 +24,7 @@ class ReverseList {
     }
 
     public static void main(String[] args) {
-        ListNode<Integer> head = new ListNode<Integer>(1);
+        ListNode head = new ListNode(1);
         head.add(3);
         head.add(2);
         ReverseList reverseList = new ReverseList();

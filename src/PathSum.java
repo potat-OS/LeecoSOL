@@ -3,7 +3,7 @@ import util.TreeNode;
 public class PathSum {
     int count = 0;
 
-    public int pathSum(TreeNode<Integer> root, int targetSum) {
+    public int pathSum(TreeNode root, int targetSum) {
         if (root == null)
             return 0;
         dfs(root, targetSum);
@@ -12,7 +12,7 @@ public class PathSum {
         return count;
     }
 
-    public void dfs(TreeNode<Integer> node, int targetSum) {
+    public void dfs(TreeNode node, int targetSum) {
         if (node != null) {
             targetSum -= node.val;
             if (targetSum == 0) {

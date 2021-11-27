@@ -1,12 +1,14 @@
 public class CountAndSay {
 
-    private int index = 1;
-    private String res = "";
+    private int index;
+    private String res;
 
     public String countAndSay(int n) {
         if (n == 1) {
             return "1";
         }
+        index = 1;
+        res = "";
         say("1", n);
         return res;
     }

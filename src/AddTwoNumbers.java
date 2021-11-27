@@ -1,10 +1,10 @@
 import java.lang.reflect.Constructor;
 import util.ListNode;
 
-public class AddTwoNumbers {
-    public ListNode<Integer> addTwoNumbers(ListNode<Integer> l1, ListNode<Integer> l2) {
+class AddTwoNumbers {
+    public ListNode addTwoNumbers(ListNode l1, ListNode l2) {
         int carry = 0;
-        ListNode<Integer> head = null, tail = null;
+        ListNode head = null, tail = null;
 
         while (l1 != null || l2 != null) {
 
@@ -14,9 +14,9 @@ public class AddTwoNumbers {
             carry = sum / 10;
 
             if (head == null) {
-                head = tail = new ListNode<Integer>(sum % 10);
+                head = tail = new ListNode(sum % 10);
             } else {
-                tail.next = new ListNode<Integer>(sum % 10);
+                tail.next = new ListNode(sum % 10);
                 tail = tail.next;
             }
 
@@ -28,25 +28,25 @@ public class AddTwoNumbers {
             }
         }
         if (carry > 0) {
-            tail.next = new ListNode<Integer>(carry);
+            tail.next = new ListNode(carry);
         }
         return head;
     }
 
     public static void main(String[] args) throws Exception {
-        ListNode<Integer> l1 = null;
-        l1 = new ListNode<Integer>(2);
+        ListNode l1 = null;
+        l1 = new ListNode(2);
         l1.add(4);
         l1.add(3);
-        ListNode<Integer> l2 = null;
-        l2 = new ListNode<Integer>(5);
+        ListNode l2 = null;
+        l2 = new ListNode(5);
         l2.add(6);
         l2.add(4);
 
         Class<?> clz = Class.forName("AddTwoNumbers");
         Constructor<?> constructor = clz.getConstructor();
         AddTwoNumbers addTwoNumbers = (AddTwoNumbers) constructor.newInstance();
-        ListNode<Integer> cur = addTwoNumbers.addTwoNumbers(l1, l2), pre = null, tmp = null;
+        ListNode cur = addTwoNumbers.addTwoNumbers(l1, l2), pre = null, tmp = null;
         System.out.println(cur.toString());
         while (cur != null) {
             tmp = cur.next;

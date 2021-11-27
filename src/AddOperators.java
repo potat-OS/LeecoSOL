@@ -1,7 +1,7 @@
 import java.util.LinkedList;
 import java.util.List;
 
-public class AddOperators {
+class AddOperators {
 
     List<String> ans;
     String num;
@@ -19,7 +19,7 @@ public class AddOperators {
 
     }
 
-    public void backTrack(StringBuilder expr, int i, long res, long before) {
+    private void backTrack(StringBuilder expr, int i, long res, long before) {
         if (i == n) {
             if (res == t) {
                 ans.add(expr.toString());

@@ -9,9 +9,9 @@ class ReversePrint {
     int[] result;
     int flag = 0;
 
-    public int[] reversePrint(ListNode<Integer> head) {
+    public int[] reversePrint(ListNode head) {
         boolean isContinue = true;
-        Stack<ListNode<Integer>> stack = new Stack<ListNode<Integer>>();
+        Stack<ListNode> stack = new Stack<ListNode>();
         while (isContinue) {
             stack.add(head);
             head = head.next;
@@ -29,7 +29,7 @@ class ReversePrint {
 
     public static void main(String[] args) throws Exception {
         ReversePrint solution = new ReversePrint();
-        ListNode<Integer> head = new ListNode<Integer>(1);
+        ListNode head = new ListNode(1);
         solution.flag = 1;
         System.out.println(solution.reversePrint(head));
     }

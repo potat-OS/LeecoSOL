@@ -8,7 +8,7 @@ public class FizzBuzz {
     private FizzBuzz() {
     }
 
-    public static FizzBuzz getInstance() {
+    public static FizzBuzz of() {
         if (instance != null) {
             return instance;
         }

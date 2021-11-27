@@ -1,4 +1,4 @@
-public class CountSegments {
+class CountSegments {
     public int countSegments(String s) {
         boolean isFirstWord = true;
         int count = 0;

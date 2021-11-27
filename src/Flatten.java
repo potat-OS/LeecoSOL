@@ -2,19 +2,19 @@ import util.DoublyListNode;
 
 public class Flatten {
 
-    DoublyListNode<Integer> res;
-    DoublyListNode<Integer> cur;
+    DoublyListNode res;
+    DoublyListNode cur;
 
-    public void DFS(DoublyListNode<Integer> node) {
+    public void DFS(DoublyListNode node) {
         if (node == null) {
             return;
         }
         if (cur == null) {
-            res = new DoublyListNode<Integer>();
+            res = new DoublyListNode();
             res.val = node.val;
             cur = res;
         } else {
-            DoublyListNode<Integer> newNode = new DoublyListNode<Integer>();
+            DoublyListNode newNode = new DoublyListNode();
             newNode.val = node.val;
             cur.next = newNode;
             newNode.prev = cur;
@@ -28,7 +28,7 @@ public class Flatten {
         }
     }
 
-    public DoublyListNode<Integer> flatten(DoublyListNode<Integer> head) {
+    public DoublyListNode flatten(DoublyListNode head) {
         DFS(head);
         return res;
     }
