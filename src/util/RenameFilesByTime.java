@@ -34,8 +34,8 @@ class RenameFilesByTime {
                 UTCTime = Converter.of(GMTTime).GMTx0ToUTCx8(), suffix = fileName.substring(fileName.lastIndexOf("."));
         File newFile = new File(file.getParent() + "\\" + UTCTime + "_" + file.length() + suffix);
         if (!newFile.exists()) {
-            System.out.println(
-                    "No." + ++count + " " + fileName + " is renamed to " + newFile.getName() + file.renameTo(newFile));
+            System.out.println("No." + ++count + " " + fileName + " is renamed to " + newFile.getName() + ": "
+                    + file.renameTo(newFile));
         }
     }
 

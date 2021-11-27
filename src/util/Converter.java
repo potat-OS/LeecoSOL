@@ -50,7 +50,7 @@ public class Converter {
         res.append(String.valueOf(parts[0]).substring(2, 4));
         for (int i = 1; i < parts.length; i++) {
             res.append(i != 2 ? (parts[i] < 10 ? prefix + parts[i] : parts[i])
-                    : "-" + (parts[i] < 10 ? prefix + parts[i] : parts[i]));
+                    : (parts[i] < 10 ? prefix + parts[i] : parts[i]) + "-");
         }
         return res.toString();
     }
