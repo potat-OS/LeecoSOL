@@ -2,7 +2,7 @@ import java.util.HashMap;
 import java.util.Map;
 import java.util.Scanner;
 
-public class HexToDecimal {
+class HexToDecimal {
 
     public static final int BaseHex = 16;
     public static Map<Character, String> HexMap = new HashMap<Character, String>() {

@@ -1,7 +1,7 @@
 import java.lang.reflect.Constructor;
 import java.util.*;
 
-public class Multiply {
+class Multiply {
     int[] numbs1;
     int[] numbs2;
     List<List<Integer>> list;

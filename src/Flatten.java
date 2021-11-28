@@ -1,6 +1,6 @@
 import util.DoublyListNode;
 
-public class Flatten {
+class Flatten {
 
     DoublyListNode res;
     DoublyListNode cur;

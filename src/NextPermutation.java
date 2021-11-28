@@ -1,4 +1,4 @@
-public class NextPermutation {
+class NextPermutation {
     public void nextPermutation(int[] nums) {
         int maxIndex = nums.length - 1;
         int l1 = maxIndex - 1, l2 = maxIndex;

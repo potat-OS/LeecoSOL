@@ -4,7 +4,7 @@ import java.util.Random;
 // import java.util.Collections;
 // import java.util.List;
 
-public class ArrayShuffler {
+class ArrayShuffler {
 
     // // 调用Collections.shuffle()实现
     // private final int[] nums;

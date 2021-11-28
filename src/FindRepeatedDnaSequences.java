@@ -1,6 +1,6 @@
 import java.util.*;
 
-public class FindRepeatedDnaSequences {
+class FindRepeatedDnaSequences {
 
     public List<String> findRepeatedDnaSequences(String s) {
         Map<String, Integer> map = new HashMap<>();

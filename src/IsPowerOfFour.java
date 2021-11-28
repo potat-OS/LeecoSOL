@@ -1,7 +1,7 @@
 // import java.util.HashSet;
 // import java.util.Set;
 
-public class IsPowerOfFour {
+class IsPowerOfFour {
     // Set<Long> set;
 
     // public boolean isPowerOfFour(int n) {

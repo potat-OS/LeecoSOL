@@ -3,7 +3,7 @@ import java.util.Deque;
 import java.util.HashMap;
 import java.util.Map;
 
-public class NextGreaterElement {
+class NextGreaterElement {
     public int[] nextGreaterElement(int[] nums1, int[] nums2) {
         Map<Integer, Integer> map = new HashMap<>();
         Deque<Integer> stack = new ArrayDeque<>();

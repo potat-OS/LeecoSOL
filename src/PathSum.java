@@ -1,6 +1,6 @@
 import util.TreeNode;
 
-public class PathSum {
+class PathSum {
     int count = 0;
 
     public int pathSum(TreeNode root, int targetSum) {

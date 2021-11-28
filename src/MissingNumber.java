@@ -1,4 +1,4 @@
-public class MissingNumber {
+class MissingNumber {
 
     private int max = 0;
     private int capacity = 0;

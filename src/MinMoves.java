@@ -1,6 +1,6 @@
 import java.util.Arrays;
 
-public class MinMoves {
+class MinMoves {
     public int minMoves(int[] nums) {
         int n = nums.length - 1;
         int ans = 0;

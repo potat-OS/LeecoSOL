@@ -2,7 +2,7 @@ import java.util.HashMap;
 import java.util.Map;
 import java.util.Map.Entry;
 
-public class IsRectangleCover {
+class IsRectangleCover {
     public boolean isRectangleCover(int[][] rectangles) {
         Map<String, Integer> map = new HashMap<>();
         long total = 0;

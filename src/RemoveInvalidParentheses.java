@@ -1,7 +1,7 @@
 import java.util.ArrayList;
 import java.util.List;
 
-public class RemoveInvalidParentheses {
+class RemoveInvalidParentheses {
 
     List<String> ans = new ArrayList<>();
 

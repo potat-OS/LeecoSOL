@@ -1,6 +1,6 @@
 import util.TreeNode;
 
-public class KthSmallest {
+class KthSmallest {
 
     int index = 0;
     int ans = 0;

@@ -1,4 +1,4 @@
-public class Divide {
+class Divide {
     public int divide(int dividend, int divisor) {
         int dd = dividend;
         int dr = divisor;

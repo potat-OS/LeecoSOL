@@ -1,6 +1,6 @@
 import java.util.Arrays;
 
-public class WordDictionary {
+class WordDictionary {
 
     // 维护一个字符串数组
     private String[] container = {};

@@ -1,5 +1,5 @@
 // TODO
-public class FindMedianSortedArrays {
+class FindMedianSortedArrays {
     private int[] nums1 = {};
     private int[] nums2 = {};
     private int l1 = 0;

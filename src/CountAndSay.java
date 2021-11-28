@@ -1,4 +1,4 @@
-public class CountAndSay {
+class CountAndSay {
 
     private int index;
     private String res;

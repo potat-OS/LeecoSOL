@@ -3,7 +3,7 @@ import java.util.*;
 /**
  * @author Han.Linjue
  */
-public class BDFSTest {
+class BDFSTest {
 
     int ways, k, n;
     int flag = 0;

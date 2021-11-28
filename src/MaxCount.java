@@ -1,4 +1,4 @@
-public class MaxCount {
+class MaxCount {
     public int maxCount(int m, int n, int[][] ops) {
         int minVertical = m, minHorizon = n;
         for (int[] op : ops) {

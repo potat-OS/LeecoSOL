@@ -1,4 +1,4 @@
-public class BuddyStrings {
+class BuddyStrings {
     public boolean buddyStrings(String s, String goal) {
         int sLen = s.length();
         int[] sArr = new int[26];

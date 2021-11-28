@@ -1,4 +1,4 @@
-public class SearchMatrix {
+class SearchMatrix {
     public boolean searchMatrix(int[][] matrix, int target) {
         for (int i = 0; i < matrix.length; i++) {
             if (binarySearch(matrix[i], target)) {

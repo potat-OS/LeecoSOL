@@ -1,4 +1,4 @@
-public class OriginalDigits {
+class OriginalDigits {
     public String originalDigits(String s) {
         StringBuilder ans = new StringBuilder();
         int[] res = new int[10];

@@ -1,7 +1,7 @@
 import java.util.HashMap;
 import java.util.Map;
 
-public class ToHex {
+class ToHex {
 
     private static final int baseHex = 16;
     private static Map<Integer, Character> hexMap = new HashMap<>() {

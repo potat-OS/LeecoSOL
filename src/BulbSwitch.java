@@ -1,4 +1,4 @@
-public class BulbSwitch {
+class BulbSwitch {
     // 击败5%
     // public int bulbSwitch(int n) {
     // int ans = 0;

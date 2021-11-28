@@ -1,6 +1,6 @@
 import java.util.*;
 
-public class TwoSUM {
+class TwoSUM {
 
     private int[] numbers;
     private int target;

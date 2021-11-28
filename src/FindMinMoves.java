@@ -1,6 +1,6 @@
 import java.lang.reflect.Constructor;
 
-public class FindMinMoves {
+class FindMinMoves {
     int[] machines;
     int[] res;
     int avg;

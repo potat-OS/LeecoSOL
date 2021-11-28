@@ -3,7 +3,7 @@
 // import java.util.Map;
 // import java.util.Set;
 
-public class MaxProduct {
+class MaxProduct {
 
     // // 朴素的做法 1180ms 10%
     // public int maxProduct(String[] words) {

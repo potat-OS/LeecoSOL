@@ -1,4 +1,4 @@
-public class ConstructRectangle {
+class ConstructRectangle {
     public int[] constructRectangle(int area) {
 
         int w = (int) Math.sqrt(area);

@@ -1,6 +1,6 @@
 import java.util.*;
 
-public class LengthOfLongestSubstring {
+class LengthOfLongestSubstring {
 
     public int lengthOfLongestSubstring(String s) {
 

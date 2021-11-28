@@ -1,7 +1,7 @@
 import java.util.HashMap;
 import java.util.Map;
 
-public class FractionToDecimal {
+class FractionToDecimal {
     public String fractionToDecimal(int numerator, int denominator) {
         StringBuilder sb = new StringBuilder();
         Map<Long, Integer> modMap = new HashMap<>();

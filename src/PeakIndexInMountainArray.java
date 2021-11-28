@@ -1,4 +1,4 @@
-public class PeakIndexInMountainArray {
+class PeakIndexInMountainArray {
     public int peakIndexInMountainArray(int[] arr) {
         int left = 0, right = arr.length - 1, ans = 0;
         while (left <= right) {

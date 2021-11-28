@@ -1,7 +1,7 @@
 import java.util.HashMap;
 import java.util.Map;
 
-public class LongestSubsequence {
+class LongestSubsequence {
 
     public int longestSubsequence(int[] arr, int difference) {
         int ans = 1;

@@ -1,6 +1,6 @@
 import java.util.*;
 
-public class GetPrimeNumber {
+class GetPrimeNumber {
 
     public static List<String> MergeRecords(Map<Integer, Integer> map) {
         int maxLen = 0;

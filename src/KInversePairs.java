@@ -1,4 +1,4 @@
-public class KInversePairs {
+class KInversePairs {
 
     private final int mod = 1000000007;
 

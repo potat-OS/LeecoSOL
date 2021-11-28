@@ -1,4 +1,4 @@
-public class DetectCapitalUse {
+class DetectCapitalUse {
     public boolean detectCapitalUse(String word) {
         boolean ans = true;
         if (word.length() == 1) {

@@ -1,4 +1,4 @@
-public class GetMoneyAmount {
+class GetMoneyAmount {
     public int getMoneyAmount(int n) {
         int minCost = 0;
         int[][] dp = new int[n + 1][n + 1];

@@ -1,4 +1,4 @@
-public class NumberToWords {
+class NumberToWords {
 
     private String[] grpTab = { "", "", "Thousand ", "Million ", "Billion " };
     private String[] bitNumTab = { "", "One ", "Two ", "Three ", "Four ", "Five ", "Six ", "Seven ", "Eight ", "Nine ",

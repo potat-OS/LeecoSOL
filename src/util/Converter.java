@@ -2,7 +2,7 @@ package util;
 
 import java.util.function.Function;
 
-public class Converter {
+class Converter {
 
     private int[] parts;
 
@@ -23,25 +23,25 @@ public class Converter {
         boolean isLeap = parts[0] % 400 == 0 || (parts[0] % 4 == 0 && parts[0] % 100 != 0), isContinue = true;
         while (idx >= 0 && isContinue) {
             switch (idx) {
-            case 3:
-                isContinue = (parts[idx] += 8) >= maxHour;
-                parts[idx] += isContinue ? -maxHour : 0;
-                break;
-            case 2:
-                maxDay = parts[1] == 2 ? (isLeap ? 29 : 28)
-                        : (parts[1] == 4 || parts[1] == 6 || parts[1] == 9 || parts[1] == 11 ? 30 : 31);
-                isContinue = (++parts[idx]) > maxDay;
-                parts[idx] += isContinue ? -maxDay : 0;
-                break;
-            case 1:
-                isContinue = (parts[idx] + 1) > maxMonth;
-                parts[idx] += isContinue ? -maxMonth : 1;
-                break;
-            case 0:
-                parts[idx]++;
-                break;
-            default:
-                break;
+                case 3:
+                    isContinue = (parts[idx] += 8) >= maxHour;
+                    parts[idx] += isContinue ? -maxHour : 0;
+                    break;
+                case 2:
+                    maxDay = parts[1] == 2 ? (isLeap ? 29 : 28)
+                            : (parts[1] == 4 || parts[1] == 6 || parts[1] == 9 || parts[1] == 11 ? 30 : 31);
+                    isContinue = (++parts[idx]) > maxDay;
+                    parts[idx] += isContinue ? -maxDay : 0;
+                    break;
+                case 1:
+                    isContinue = (parts[idx] + 1) > maxMonth;
+                    parts[idx] += isContinue ? -maxMonth : 1;
+                    break;
+                case 0:
+                    parts[idx]++;
+                    break;
+                default:
+                    break;
             }
             idx--;
         }

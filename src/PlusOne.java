@@ -1,7 +1,7 @@
 import java.util.Arrays;
 import java.util.stream.IntStream;
 
-public class PlusOne {
+class PlusOne {
     public int[] plusOne(int[] digits) {
         int tmp = 0;
         int index = digits.length - 1;

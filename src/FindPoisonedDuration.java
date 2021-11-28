@@ -1,4 +1,4 @@
-public class FindPoisonedDuration {
+class FindPoisonedDuration {
     public int findPoisonedDuration(int[] timeSeries, int duration) {
 
         int ans = 0;
