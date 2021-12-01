@@ -70,10 +70,10 @@ class MissingFilesHandler {
                         Files.copy(src.toPath(), miss.toPath(), StandardCopyOption.REPLACE_EXISTING);
                         logWriter.write("配置: [" + srcFullPath + "]-> [" + missFullPath + "]に配置\n");
                         arranged++;
-                    } else if (src.lastModified() > miss.lastModified()) {
-                        Files.copy(src.toPath(), miss.toPath(), StandardCopyOption.REPLACE_EXISTING);
-                        logWriter.write("書換: [" + srcFullPath + "]-> [" + missFullPath + "]に書換\n");
-                        overwrote++;
+                        // } else if (src.lastModified() > miss.lastModified()) {
+                        // Files.copy(src.toPath(), miss.toPath(), StandardCopyOption.REPLACE_EXISTING);
+                        // logWriter.write("書換: [" + srcFullPath + "]-> [" + missFullPath + "]に書換\n");
+                        // overwrote++;
                     }
                 }
             }
@@ -81,7 +81,7 @@ class MissingFilesHandler {
     }
 
     public static void main(String[] args) {
-        String to = "E:\\GLOVIA\\tmp\\11-25-2021 05-08-19 午後.txt", src = "E:\\GLOVIA\\origin",
+        String to = "E:\\GLOVIA\\tmp\\11-29-2021 11-12-37 午前.txt", src = "E:\\GLOVIA\\origin",
                 logPath = "E:\\GLOVIA\\tmp\\handler.log";
         long start = System.currentTimeMillis();
         MissingFilesHandler.of(src, to, logPath).handle();
