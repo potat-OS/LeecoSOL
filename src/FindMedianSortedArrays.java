@@ -1,31 +1,49 @@
-// TODO
 class FindMedianSortedArrays {
-    private int[] nums1 = {};
-    private int[] nums2 = {};
-    private int l1 = 0;
-    private int l2 = 0;
-    private int len = 0;
+    int[] arr1, arr2;
+    int len1, len2;
 
     public double findMedianSortedArrays(int[] nums1, int[] nums2) {
-        this.nums1 = nums1;
-        this.nums2 = nums2;
-        this.l1 = nums1.length;
-        this.l2 = nums2.length;
-        this.len = l1 + l2;
-        return 0.5 * (findMedian(len / 2, 0, 0) + findMedian((1 + len) / 2, 0, 0));
+        this.arr1 = nums1;
+        this.arr2 = nums2;
+        len1 = arr1.length;
+        len2 = arr2.length;
+        if (len1 == 0) {
+            return 0.5 * (arr2[(len2 - 1) / 2] + arr2[len2 / 2]);
+        } else if (len2 == 0) {
+            return 0.5 * (arr1[(len1 - 1) / 2] + arr1[len1 / 2]);
+        } else {
+            return 0.5 * (find((len1 + len2 - 1) / 2) + find((len1 + len2) / 2));
+        }
     }
 
-    private int findMedian(int target, int start1, int start2) {
-        int k = target / 2 - 1, i1 = k + start1, i2 = k + start2;
-        if (nums1[i1] < nums2[i2]) {
-            start1 += k;
+    // 找到第k小的数（非二分）
+    private int find(int k) {
+        int ans = 0, idx = 0, i1 = 0, i2 = 0;
+        while (idx <= k) {
+            // 边界条件
+            if (i1 == len1) {
+                return arr2[k - i1];
+            }
+            if (i2 == len2) {
+                return arr1[k - i2];
+            }
+            // 因为是有序数组可以直接比较
+            if (arr1[i1] == arr2[i2]) {
+                // 相同时两数组指针同时右移
+                ans = arr1[i1];
+                i1++; i2++; idx++;
+            } else {
+                // 值小的数组对应指针右移
+                ans = arr1[i1] < arr2[i2] ? arr1[i1++] : arr2[i2++];
+            }
+            idx++;
         }
-        return findMedian(target - k, start1, start2);
+        return ans;
     }
 
     public static void main(String[] args) {
-        int[] nums1 = {};
-        int[] nums2 = {};
+        int[] nums1 = { 1, 2 };
+        int[] nums2 = { 3, 4 };
         System.out.println(new FindMedianSortedArrays().findMedianSortedArrays(nums1, nums2));
     }
 }
