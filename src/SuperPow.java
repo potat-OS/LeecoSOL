@@ -10,12 +10,24 @@ class SuperPow {
         return ans;
     }
 
+    // private int quickMul(int x, int n) {
+    //     if (n == 0) {
+    //         return 1;
+    //     }
+    //     int y = quickMul(x, n / 2);
+    //     return (int) ((n % 2 == 0 ? y * y : y * y * x) % MOD);
+    // }
+
     private int quickMul(int x, int n) {
-        if (n == 0) {
-            return 1;
+        int res = 1;
+        while (n != 0) {
+            if (n % 2 != 0) {
+                res = (int) ((long) res * x % MOD);
+            }
+            x = (int) ((long) x * x % MOD);
+            n /= 2;
         }
-        int y = quickMul(x, n / 2);
-        return (int) ((n % 2 == 0 ? y * y : y * y * x) % MOD);
+        return res;
     }
 
     public static void main(String[] args) {
