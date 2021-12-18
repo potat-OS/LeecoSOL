@@ -4,7 +4,7 @@ import java.util.Map;
 class ToHex {
 
     private static final int baseHex = 16;
-    private static Map<Integer, Character> hexMap = new HashMap<>() {
+    private static Map<Integer, Character> hexMap = new HashMap<Integer, Character>() {
         {
             put(0, '0');
             put(1, '1');
@@ -24,7 +24,7 @@ class ToHex {
             put(15, 'f');
         }
     };
-    private static Map<Character, Character> negativeHexMap = new HashMap<>() {
+    private static Map<Character, Character> negativeHexMap = new HashMap<Character, Character>() {
         {
             put('f', '0');
             put('e', '1');
