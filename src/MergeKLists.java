@@ -1,10 +1,10 @@
 import util.ListNode;
 
+// TODO
 class MergeKLists {
 
     public ListNode mergeKLists(ListNode[] lists) {
         ListNode ans = new ListNode();
-        ListNode tmpAns = ans;
         for (int i = 0; i < lists.length; i++) {
 
         }
